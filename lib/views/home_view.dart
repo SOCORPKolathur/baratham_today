@@ -12,6 +12,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../widgets/kText.dart';
 import '../widgets/news_tile_widget.dart';
 
 class HomeView extends StatefulWidget {
@@ -105,8 +106,8 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
-                                "Trending",
+                              KText(
+                                text: "Trending",
                                 style: GoogleFonts.poppins(
                                   fontSize: 17,
                                   fontWeight: FontWeight.w800,
@@ -117,8 +118,8 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                                 onTap: (){
                                   Navigator.push(context, MaterialPageRoute(builder: (ctx)=> const NewsListView(title: "Trending")));
                                 },
-                                child: Text(
-                                  "See All",
+                                child: KText(
+                                  text: "See All",
                                   style: GoogleFonts.poppins(
                                     fontSize: 15,
                                     fontWeight: FontWeight.w500,
@@ -168,8 +169,8 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                                         }).toList(),
                                       ),
                                       SizedBox(height: 5),
-                                      Text(
-                                        news.location!,
+                                      KText(
+                                        text: news.location!,
                                         style: GoogleFonts.poppins(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w400,
@@ -180,9 +181,8 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                                       SizedBox(
                                         height: 30,
                                         width: width,
-                                        child: Text(
-                                          news.title!,
-                                          overflow: TextOverflow.ellipsis,
+                                        child: KText(
+                                          text: news.title!,
                                           style: GoogleFonts.poppins(
                                             fontSize: 17,
                                             fontWeight: FontWeight.w400,
@@ -203,8 +203,8 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                                               Row(
                                                 crossAxisAlignment: CrossAxisAlignment.center,
                                                 children: [
-                                                  Text(
-                                                    news.channelName!,
+                                                  KText(
+                                                    text: news.channelName!,
                                                     style: GoogleFonts.poppins(
                                                       fontSize: 12,
                                                       fontWeight: FontWeight.w600,
@@ -214,8 +214,8 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                                                   SizedBox(width: 15),
                                                   Icon(Icons.access_time_filled,size: 15,),
                                                   SizedBox(width: 5),
-                                                  Text(
-                                                    "14m ago",
+                                                  KText(
+                                                    text: "14m ago",
                                                     style: GoogleFonts.poppins(
                                                       fontSize: 10,
                                                       fontWeight: FontWeight.w500,
@@ -240,8 +240,8 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
-                                "Latest",
+                              KText(
+                                text: "Latest",
                                 style: GoogleFonts.poppins(
                                   fontSize: 17,
                                   fontWeight: FontWeight.w800,
@@ -252,8 +252,8 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                                 onTap: (){
                                   Navigator.push(context, MaterialPageRoute(builder: (ctx)=> const NewsListView(title: "Latest")));
                                 },
-                                child: Text(
-                                  "See All",
+                                child: KText(
+                                  text: "See All",
                                   style: GoogleFonts.poppins(
                                     fontSize: 15,
                                     fontWeight: FontWeight.w500,

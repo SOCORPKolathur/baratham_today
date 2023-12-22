@@ -1,4 +1,3 @@
-import 'package:baratham_today/views/main_view.dart';
 import 'package:baratham_today/views/verification_complete_view.dart';
 import 'package:baratham_today/widgets/primary_button.dart';
 import 'package:chips_choice/chips_choice.dart';
@@ -6,8 +5,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../constants.dart';
+import '../widgets/kText.dart';
 import '../widgets/search_widget.dart';
 
 class ChooseTopicsView extends StatefulWidget {
@@ -45,8 +44,8 @@ class _ChooseTopicsViewState extends State<ChooseTopicsView> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         centerTitle: true,
-        title: Text(
-          "Choose Your Topics",
+        title: KText(
+          text: "Choose Your Topics",
           style: GoogleFonts.poppins(
             fontSize: 18,
             fontWeight: FontWeight.w700,
@@ -162,10 +161,9 @@ class CustomChip extends StatelessWidget {
               left: 9,
               right: 9,
               bottom: 7,
-              child: Text(
-                label,
+              child: KText(
+                text: label,
                 maxLines: 1,
-                overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   color: selected ? Colors.white : theme.colorScheme.onSurface,
                 ),
@@ -207,8 +205,8 @@ class ContentState extends State<Content> {
             width: double.infinity,
             padding: const EdgeInsets.all(15),
             // color: Colors.blueGrey[50],
-            child: Text(
-              widget.title,
+            child: KText(
+              text: widget.title,
               style: const TextStyle(
                 // color: Colors.blueGrey,
                 fontWeight: FontWeight.w500,

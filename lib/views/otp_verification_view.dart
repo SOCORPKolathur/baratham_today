@@ -1,5 +1,3 @@
-import 'dart:io';
-import 'package:baratham_today/views/home_view.dart';
 import 'package:baratham_today/views/language_view.dart';
 import 'package:baratham_today/widgets/primary_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,9 +5,9 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
 import 'package:pinput/pinput.dart';
 import '../constants.dart';
+import '../widgets/kText.dart';
 
 class OtpVerificationView extends StatefulWidget {
 
@@ -122,8 +120,8 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
                       Column(
                         children: [
                           SizedBox(height: size.height * 0.07),
-                          Text(
-                            "OTP Verification",
+                          KText(
+                            text: "OTP Verification",
                             style: GoogleFonts.poppins(
                               fontSize: size.width/11.416666667,
                               color: Constants.bodyTextColor,
@@ -131,8 +129,8 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
                             ),
                           ),
                           SizedBox(height: size.height/173.2),
-                          Text(
-                            "Enter the OTP sent to +91 7639033006",
+                          KText(
+                            text: "Enter the OTP sent to ${widget.phone}",
                             textAlign: TextAlign.center,
                             style: GoogleFonts.poppins(
                               fontWeight: FontWeight.w600,
@@ -167,8 +165,8 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(
-                                  "Resend code in ",
+                                KText(
+                                  text: "Resend code in ",
                                   style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.w600,
                                     fontSize: 14,
@@ -176,7 +174,7 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
                                   ),
                                 ),
                                 Text(
-                                  counter.toString() +"s",
+                                  "${counter}s",
                                   style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.w600,
                                     fontSize: 14,
@@ -256,8 +254,8 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
                       Container(
                         margin: const EdgeInsets.only(top: 25.0),
                         child: Center(
-                          child: Text(
-                            "loading..Please wait...",
+                          child: KText(
+                            text: "loading..Please wait...",
                             style: TextStyle(
                               color: Constants.primaryAppColor,
                             ),
@@ -299,13 +297,14 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
             Icon(Icons.info_outline, color: Constants.primaryAppColor),
             Padding(
               padding: EdgeInsets.only(left: 8.0),
-              child: Text(
-                "Invalid credentials",
+              child: KText(
+                text: "Invalid credentials",
                 style: TextStyle(color: Colors.black, fontSize: 10),
               ),
             ),
           ],
-        )),
+        ),
+    ),
   );
 
 }

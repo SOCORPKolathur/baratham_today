@@ -2,6 +2,8 @@ import 'package:baratham_today/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'kText.dart';
+
 class IntroWidget extends StatelessWidget {
   const IntroWidget({
     super.key,
@@ -50,8 +52,8 @@ class IntroWidget extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    title,
+                  KText(
+                    text: title,
                     style: GoogleFonts.poppins(
                       color: Constants.secondaryAppColor,
                       fontSize: 20,
@@ -59,8 +61,8 @@ class IntroWidget extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 16,),
-                  Text(
-                    description,
+                  KText(
+                    text: description,
                     style: GoogleFonts.poppins(
                       color: Constants.bodyTextColor,
                       fontSize: 14,

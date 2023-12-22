@@ -3,6 +3,8 @@ import 'package:baratham_today/views/intro_view.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../widgets/kText.dart';
+
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
 
@@ -40,8 +42,8 @@ class _SplashViewState extends State<SplashView> {
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: Column(
                 children: [
-                  Text(
-                    "Baratham",
+                  KText(
+                    text: "Baratham",
                     style: GoogleFonts.deliusSwashCaps(
                       color: Constants.primaryAppColor,
                       fontSize: 60,
@@ -51,8 +53,8 @@ class _SplashViewState extends State<SplashView> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(
-                        "Today",
+                      KText(
+                        text: "Today",
                         style: GoogleFonts.deliusSwashCaps(
                           color: Constants.secondaryAppColor,
                           fontSize: 30,
@@ -64,8 +66,8 @@ class _SplashViewState extends State<SplashView> {
                 ],
               ),
             ),
-            Text(
-              "--  Your NEWS Partner  --",
+            KText(
+              text: "--  Your NEWS Partner  --",
               style: GoogleFonts.justAnotherHand(
                 color: Constants.secondaryAppColor,
                 fontSize: 27,

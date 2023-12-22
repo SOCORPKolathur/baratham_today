@@ -2,6 +2,7 @@ import 'package:baratham_today/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'kText.dart';
 
 class PrimaryButton extends StatefulWidget {
   const PrimaryButton({super.key, required this.onTap, required this.title});
@@ -31,8 +32,8 @@ class _PrimaryButtonState extends State<PrimaryButton> {
           color: Constants.primaryAppColor,
         ),
         child: Center(
-          child: Text(
-            widget.title,
+          child: KText(
+            text: widget.title,
             style: GoogleFonts.poppins(
               color: Constants.primaryWhite,
               fontWeight: FontWeight.w600,

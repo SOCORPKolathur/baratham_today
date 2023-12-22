@@ -5,6 +5,8 @@ import 'package:baratham_today/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../widgets/kText.dart';
+
 class VerificationComleteView extends StatefulWidget {
   const VerificationComleteView({super.key});
 
@@ -39,8 +41,8 @@ class _VerificationComleteViewState extends State<VerificationComleteView> {
                   padding: const EdgeInsets.symmetric(horizontal: 30),
                   child: Column(
                     children: [
-                      Text(
-                        "Baratham",
+                      KText(
+                        text: "Baratham",
                         style: GoogleFonts.deliusSwashCaps(
                           color: Constants.primaryAppColor,
                           fontSize: 60,
@@ -50,8 +52,8 @@ class _VerificationComleteViewState extends State<VerificationComleteView> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Text(
-                            "Today",
+                          KText(
+                            text: "Today",
                             style: GoogleFonts.deliusSwashCaps(
                               color: Constants.secondaryAppColor,
                               fontSize: 30,
@@ -66,16 +68,16 @@ class _VerificationComleteViewState extends State<VerificationComleteView> {
                 SizedBox(height: 35),
                 Column(
                   children: [
-                    Text(
-                      "Congratulations!",
+                    KText(
+                      text: "Congratulations!",
                       style: GoogleFonts.poppins(
                         color: Constants.bodyTextColor,
                         fontSize: 27,
                         fontWeight: FontWeight.w700,
                       ),
                     ),
-                    Text(
-                      "Your account is ready to use",
+                    KText(
+                      text: "Your account is ready to use",
                       style: GoogleFonts.poppins(
                         color: Constants.bodyTextColor,
                         fontSize: 13,

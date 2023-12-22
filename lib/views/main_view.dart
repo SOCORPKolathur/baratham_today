@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../constants.dart';
+import '../widgets/kText.dart';
 import 'home_view.dart';
 
 class MainView extends StatefulWidget {
@@ -90,8 +91,8 @@ class _MainViewState extends State<MainView> {
                                 // color: animatesetvalue==0?Color(0xff00194A):
                                 // Color(0xffA0A0A0)
                               ),
-                              Text(
-                                "Home",
+                              KText(
+                                text: "Home",
                                 style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w500,
                                   fontSize: width / 30,
@@ -120,7 +121,7 @@ class _MainViewState extends State<MainView> {
                                     ? Constants.primaryAppColor
                                     : Constants.bodyTextColor,
                               ),
-                              Text("Explore",
+                              KText(text: "Explore",
                                   style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.w500,
                                     fontSize: width / 30,
@@ -148,7 +149,7 @@ class _MainViewState extends State<MainView> {
                                     ? Constants.primaryAppColor
                                     : Constants.bodyTextColor,
                               ),
-                              Text("Bookmark",
+                              KText(text: "Bookmark",
                                   style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.w500,
                                     fontSize: width / 30,
@@ -176,7 +177,7 @@ class _MainViewState extends State<MainView> {
                                     ? Constants.primaryAppColor
                                     : Constants.bodyTextColor,
                               ),
-                              Text("Profile",
+                              KText(text: "Profile",
                                   style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.w500,
                                     fontSize: width / 30,

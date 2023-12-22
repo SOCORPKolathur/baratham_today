@@ -1,15 +1,12 @@
 import 'package:baratham_today/widgets/filter_search_widget.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../constants.dart';
 import '../models/news_model.dart';
+import '../widgets/kText.dart';
 import '../widgets/news_tile_widget.dart';
-import 'news_detail_view.dart';
 
 class BookmarksView extends StatefulWidget {
   const BookmarksView({super.key});
@@ -32,8 +29,8 @@ class _BookmarksViewState extends State<BookmarksView> {
         leading: Container(),
         leadingWidth: 0,
         backgroundColor: Constants.appBackgroundColor,
-        title: Text(
-          "Bookmark",
+        title: KText(
+          text: "Bookmark",
           style: GoogleFonts.poppins(
             fontSize: 25,
             fontWeight: FontWeight.w800,
@@ -48,9 +45,7 @@ class _BookmarksViewState extends State<BookmarksView> {
           children: [
             FilterSearchWidget(
               controller: searchController,
-              onSubmitted: (val){
-
-              },
+              onSubmitted: (val){},
             ),
             Expanded(
               child: StreamBuilder(

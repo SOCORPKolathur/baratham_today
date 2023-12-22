@@ -1,10 +1,9 @@
 import 'package:baratham_today/constants.dart';
-import 'package:baratham_today/views/home_view.dart';
 import 'package:baratham_today/views/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../widgets/intro_widget.dart';
+import '../widgets/kText.dart';
 
 class IntroView extends StatefulWidget {
   const IntroView({super.key});
@@ -89,8 +88,8 @@ class _IntroViewState extends State<IntroView> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Center(
-                        child: Text(
-                          _activePage == 2 ? "Get Started" : "Next",
+                        child: KText(
+                          text: _activePage == 2 ? "Get Started" : "Next",
                           style: GoogleFonts.poppins(
                             color: Constants.primaryWhite,
                             fontWeight: FontWeight.w600,

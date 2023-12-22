@@ -11,6 +11,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 import '../constants.dart';
+import '../widgets/kText.dart';
 
 class NewsDetailsView extends StatefulWidget {
   const NewsDetailsView({super.key, required this.news});
@@ -103,16 +104,16 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
                                     Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        Text(
-                                          widget.news.channelName!,
+                                        KText(
+                                          text: widget.news.channelName!,
                                           style: GoogleFonts.poppins(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w700,
                                             color: Constants.secondaryAppColor,
                                           ),
                                         ),
-                                        Text(
-                                          "14m ago",
+                                        KText(
+                                          text: "14m ago",
                                           style: GoogleFonts.poppins(
                                             fontSize: 14,
                                             fontWeight: FontWeight.w500,
@@ -133,8 +134,8 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 10),
-                                      child: Text(
-                                        "Following",
+                                      child: KText(
+                                        text: "Following",
                                         style: GoogleFonts.poppins(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w700,
@@ -171,8 +172,8 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
                               }).toList(),
                             ),
                             SizedBox(height: 5),
-                            Text(
-                              widget.news.location!,
+                            KText(
+                              text: widget.news.location!,
                               style: GoogleFonts.poppins(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
@@ -180,8 +181,8 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
                               ),
                             ),
                             SizedBox(height: 5),
-                            Text(
-                              widget.news.title!,
+                            KText(
+                              text: widget.news.title!,
                               style: GoogleFonts.poppins(
                                 fontSize: 19,
                                 fontWeight: FontWeight.w600,
@@ -189,8 +190,8 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
                               ),
                             ),
                             SizedBox(height: 10),
-                            Text(
-                              widget.news.description!,
+                            KText(
+                              text: widget.news.description!,
                               style: GoogleFonts.poppins(
                                 fontSize: 15,
                                 fontWeight: FontWeight.w400,
@@ -227,8 +228,8 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
                                   size: 30,
                                 ),
                               ),
-                              Text(
-                                "${widget.news.likes!.length} likes",
+                              KText(
+                                text: "${widget.news.likes!.length} likes",
                                 style: GoogleFonts.poppins(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,
@@ -254,8 +255,8 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
                                   size: 30,
                                 ),
                               ),
-                              Text(
-                                "${commentsCount}",
+                              KText(
+                                text: "${commentsCount}",
                                 style: GoogleFonts.poppins(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,
@@ -316,6 +317,9 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
   }
 
   TextEditingController commentController = TextEditingController();
+  bool isReply = false;
+  FocusNode replyFocus = FocusNode();
+  String commentDocId = "";
 
   bottomSheetWidget(UserModel user) {
     double width = MediaQuery.of(context).size.width;
@@ -356,18 +360,28 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
                       child: ListView.builder(
                         itemCount: snap.data!.docs.length,
                         itemBuilder: (ctx, i) {
-                          CommentModel comment =
-                              CommentModel.fromJson(snap.data!.docs[i].data());
+                          CommentModel comment = CommentModel.fromJson(snap.data!.docs[i].data());
                           return Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: CommentTileWidget(comment: comment));
+                              child: CommentTileWidget(
+                                comment: comment,
+                                onReply: (){
+                                  setState(() {
+                                    isReply = true;
+                                    commentDocId = snap.data!.docs[i].id;
+                                    replyFocus.requestFocus();
+                                  });
+                                },
+                              ),
+                          );
                         },
                       ),
                     ),
                     );
                   }
                   return Container();
-                }),
+                },
+            ),
             Container(
               height: 60,
               width: width,
@@ -380,6 +394,8 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
                       child: Container(
                         height: 50,
                         child: TextFormField(
+                          autofocus: true,
+                          focusNode: replyFocus,
                           controller: commentController,
                           decoration: InputDecoration(
                             contentPadding: const EdgeInsets.symmetric(
@@ -409,13 +425,28 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
                           viewComments: false,
                         );
                         var json = commentModel.toJson();
-                        await FirebaseFirestore.instance
-                            .collection('News')
-                            .doc(widget.news.id)
-                            .collection('Comments')
-                            .doc()
-                            .set(json);
-                        commentController.clear();
+                        if(isReply){
+                          await FirebaseFirestore.instance
+                              .collection('News')
+                              .doc(widget.news.id)
+                              .collection('Comments').doc(commentDocId).update(
+                            {
+                              "replies": FieldValue.arrayUnion([json]),
+                            }
+                          );
+                        }else{
+                          await FirebaseFirestore.instance
+                              .collection('News')
+                              .doc(widget.news.id)
+                              .collection('Comments')
+                              .doc()
+                              .set(json);
+                        }
+                        setState(() {
+                          isReply = false;
+                          commentDocId = "";
+                          commentController.clear();
+                        });
                       },
                       child: Container(
                         height: 50,
@@ -451,3 +482,5 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
   }
 
 }
+
+typedef ReplyCallback = void Function(bool isReply);

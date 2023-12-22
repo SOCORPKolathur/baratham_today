@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../constants.dart';
 import '../models/news_model.dart';
+import '../widgets/kText.dart';
 import 'news_detail_view.dart';
 
 class NewsListView extends StatefulWidget {
@@ -27,8 +28,8 @@ class _NewsListViewState extends State<NewsListView> {
         leading: Container(),
         leadingWidth: 0,
         backgroundColor: Constants.appBackgroundColor,
-        title: Text(
-          widget.title,
+        title: KText(
+          text: widget.title,
           style: GoogleFonts.poppins(
             fontSize: 25,
             fontWeight: FontWeight.w800,
@@ -86,8 +87,8 @@ class _NewsListViewState extends State<NewsListView> {
                                       }).toList(),
                                     ),
                                     SizedBox(height: 5),
-                                    Text(
-                                      news.location!,
+                                    KText(
+                                      text: news.location!,
                                       style: GoogleFonts.poppins(
                                         fontSize: 14,
                                         fontWeight: FontWeight.w400,
@@ -98,9 +99,8 @@ class _NewsListViewState extends State<NewsListView> {
                                     SizedBox(
                                       height: 30,
                                       width: width,
-                                      child: Text(
-                                        news.title!,
-                                        overflow: TextOverflow.ellipsis,
+                                      child: KText(
+                                        text: news.title!,
                                         style: GoogleFonts.poppins(
                                           fontSize: 17,
                                           fontWeight: FontWeight.w400,
@@ -121,8 +121,8 @@ class _NewsListViewState extends State<NewsListView> {
                                             Row(
                                               crossAxisAlignment: CrossAxisAlignment.center,
                                               children: [
-                                                Text(
-                                                  news.channelName!,
+                                                KText(
+                                                  text: news.channelName!,
                                                   style: GoogleFonts.poppins(
                                                     fontSize: 12,
                                                     fontWeight: FontWeight.w600,
@@ -132,8 +132,8 @@ class _NewsListViewState extends State<NewsListView> {
                                                 SizedBox(width: 15),
                                                 Icon(Icons.access_time_filled,size: 15,),
                                                 SizedBox(width: 5),
-                                                Text(
-                                                  "14m ago",
+                                                KText(
+                                                  text: "14m ago",
                                                   style: GoogleFonts.poppins(
                                                     fontSize: 10,
                                                     fontWeight: FontWeight.w500,

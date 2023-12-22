@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../constants.dart';
 import '../views/news_detail_view.dart';
+import 'kText.dart';
 
 class NewsTileWidget extends StatefulWidget {
   const NewsTileWidget({super.key, required this.news});
@@ -48,8 +49,8 @@ class _NewsTileWidgetState extends State<NewsTileWidget> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    widget.news.location!,
+                  KText(
+                    text: widget.news.location!,
                     style: GoogleFonts.poppins(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
@@ -60,8 +61,8 @@ class _NewsTileWidgetState extends State<NewsTileWidget> {
                   SizedBox(
                     height: 50,
                     width: width,
-                    child: Text(
-                      widget.news.title!,
+                    child: KText(
+                      text: widget.news.title!,
                       style: GoogleFonts.poppins(
                         fontSize: 17,
                         fontWeight: FontWeight.w400,
@@ -82,8 +83,8 @@ class _NewsTileWidgetState extends State<NewsTileWidget> {
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Text(
-                                widget.news.channelName!,
+                              KText(
+                                text: widget.news.channelName!,
                                 style: GoogleFonts.poppins(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
@@ -93,8 +94,8 @@ class _NewsTileWidgetState extends State<NewsTileWidget> {
                               SizedBox(width: 15),
                               Icon(Icons.access_time_filled,size: 15,),
                               SizedBox(width: 5),
-                              Text(
-                                "14m ago",
+                              KText(
+                                text: "14m ago",
                                 style: GoogleFonts.poppins(
                                   fontSize: 10,
                                   fontWeight: FontWeight.w500,

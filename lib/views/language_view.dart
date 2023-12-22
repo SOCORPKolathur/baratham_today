@@ -154,7 +154,7 @@ class _LanguagesViewState extends State<LanguagesView> {
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              languagesList[i].name!,
+                              languagesList[i].orgName!,
                               style: GoogleFonts.poppins(
                                 color: selectedIndex == i ? Constants.primaryWhite : Constants.bodyTextColor,
                               ),

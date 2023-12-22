@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 import '../constants.dart';
+import '../widgets/kText.dart';
 
 class NotificationsView extends StatefulWidget {
   const NotificationsView({super.key, required this.userDocId});
@@ -22,8 +23,8 @@ class _NotificationsViewState extends State<NotificationsView> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Constants.appBackgroundColor,
-        title: Text(
-          "Notifications",
+        title: KText(
+          text: "Notifications",
           style: GoogleFonts.poppins(
             fontSize: 25,
             fontWeight: FontWeight.w800,
@@ -94,7 +95,7 @@ class _NotificationsViewState extends State<NotificationsView> {
                                     child: const Center(
                                       child: Padding(
                                         padding: EdgeInsets.symmetric(horizontal: 10,vertical: 0),
-                                        child: Text("New"),
+                                        child: KText(text: "New", style: TextStyle(),),
                                       ),
                                     ),
                                   )
@@ -105,16 +106,16 @@ class _NotificationsViewState extends State<NotificationsView> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(
-                                  snap.data!.docs[i]['date'],
+                                KText(
+                                  text: snap.data!.docs[i]['date'],
                                   style: GoogleFonts.openSans(
                                     color: Colors.grey,
                                     fontSize: 15,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
-                                Text(
-                                  snap.data!.docs[i]['time'],
+                                KText(
+                                  text: snap.data!.docs[i]['time'],
                                   style: GoogleFonts.openSans(
                                     color: Colors.grey,
                                     fontSize: 15,
@@ -124,16 +125,16 @@ class _NotificationsViewState extends State<NotificationsView> {
                               ],
                             ),
                             SizedBox(height: size.height/86.6),
-                            Text(
-                              snap.data!.docs[i]['subject'],
+                            KText(
+                              text: snap.data!.docs[i]['subject'],
                               style: GoogleFonts.openSans(
                                 color: const Color(0xff000850),
                                 fontSize: size.width/22.833333333,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
-                            Text(
-                              snap.data!.docs[i]['content'],
+                            KText(
+                              text: snap.data!.docs[i]['content'],
                               style: GoogleFonts.openSans(
                                 color: const Color(0xff454545),
                                 fontSize: 15,

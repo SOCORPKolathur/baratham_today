@@ -3,9 +3,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../constants.dart';
 import '../models/news_model.dart';
+import '../widgets/kText.dart';
 import 'news_detail_view.dart';
 
 class ExploreView extends StatefulWidget {
@@ -26,8 +26,8 @@ class _ExploreViewState extends State<ExploreView> {
         leading: Container(),
         leadingWidth: 0,
         backgroundColor: Constants.appBackgroundColor,
-        title: Text(
-          "Explore",
+        title: KText(
+          text: "Explore",
           style: GoogleFonts.poppins(
             fontSize: 25,
             fontWeight: FontWeight.w800,
@@ -43,16 +43,16 @@ class _ExploreViewState extends State<ExploreView> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Topic",
+                KText(
+                  text: "Topic",
                   style: GoogleFonts.poppins(
                     fontSize: 17,
                     fontWeight: FontWeight.w700,
                     color: Constants.secondaryAppColor,
                   ),
                 ),
-                Text(
-                  "See All",
+                KText(
+                  text: "See All",
                   style: GoogleFonts.poppins(
                     fontSize: 15,
                     fontWeight: FontWeight.w500,
@@ -62,8 +62,8 @@ class _ExploreViewState extends State<ExploreView> {
               ],
             ),
             SizedBox(height: 10),
-            Text(
-              "Popular Topics",
+            KText(
+              text: "Popular Topics",
               style: GoogleFonts.poppins(
                 fontSize: 17,
                 fontWeight: FontWeight.w700,
@@ -116,8 +116,8 @@ class _ExploreViewState extends State<ExploreView> {
                                     }).toList(),
                                   ),
                                   SizedBox(height: 5),
-                                  Text(
-                                    news.location!,
+                                  KText(
+                                    text: news.location!,
                                     style: GoogleFonts.poppins(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w400,
@@ -128,9 +128,8 @@ class _ExploreViewState extends State<ExploreView> {
                                   SizedBox(
                                     height: 30,
                                     width: width,
-                                    child: Text(
-                                      news.title!,
-                                      overflow: TextOverflow.ellipsis,
+                                    child: KText(
+                                      text: news.title!,
                                       style: GoogleFonts.poppins(
                                         fontSize: 17,
                                         fontWeight: FontWeight.w400,
@@ -151,8 +150,8 @@ class _ExploreViewState extends State<ExploreView> {
                                           Row(
                                             crossAxisAlignment: CrossAxisAlignment.center,
                                             children: [
-                                              Text(
-                                                news.channelName!,
+                                              KText(
+                                                text: news.channelName!,
                                                 style: GoogleFonts.poppins(
                                                   fontSize: 12,
                                                   fontWeight: FontWeight.w600,
@@ -162,8 +161,8 @@ class _ExploreViewState extends State<ExploreView> {
                                               SizedBox(width: 15),
                                               Icon(Icons.access_time_filled,size: 15,),
                                               SizedBox(width: 5),
-                                              Text(
-                                                "14m ago",
+                                              KText(
+                                                text: "14m ago",
                                                 style: GoogleFonts.poppins(
                                                   fontSize: 10,
                                                   fontWeight: FontWeight.w500,

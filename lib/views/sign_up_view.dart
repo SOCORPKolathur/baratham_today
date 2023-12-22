@@ -6,6 +6,8 @@ import 'package:baratham_today/widgets/secondary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../widgets/kText.dart';
+
 class SignUpView extends StatefulWidget {
   const SignUpView({super.key});
 
@@ -35,8 +37,8 @@ class _SignUpViewState extends State<SignUpView> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: 30),
-                    Text(
-                      "HELLO!",
+                    KText(
+                      text: "HELLO!",
                       style: GoogleFonts.poppins(
                         color: Constants.primaryAppColor,
                         fontWeight: FontWeight.w700,
@@ -44,8 +46,8 @@ class _SignUpViewState extends State<SignUpView> {
                       ),
                     ),
                     SizedBox(height: 10),
-                    Text(
-                      "Signup to get started",
+                    KText(
+                      text: "Signup to get started",
                       style: GoogleFonts.poppins(
                         color: Constants.bodyTextColor,
                         fontWeight: FontWeight.w400,
@@ -93,8 +95,8 @@ class _SignUpViewState extends State<SignUpView> {
                               splashRadius: 2,
                               visualDensity: VisualDensity.compact,
                             ),
-                            Text(
-                              "Remember Me",
+                            KText(
+                              text: "Remember Me",
                               style: GoogleFonts.poppins(
                                 color: Constants.bodyTextColor,
                               ),
@@ -114,8 +116,8 @@ class _SignUpViewState extends State<SignUpView> {
                 ),
                 SizedBox(height: 15),
                 Center(
-                  child: Text(
-                    "Or Continue with",
+                  child: KText(
+                    text: "Or Continue with",
                     style: GoogleFonts.poppins(
                       color: Constants.bodyTextColor,
                     ),
@@ -141,16 +143,16 @@ class _SignUpViewState extends State<SignUpView> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      "Already have an account?",
+                    KText(
+                      text: "Already have an account?",
                       style: GoogleFonts.poppins(
                         fontWeight: FontWeight.w500,
                         color: Constants.bodyTextColor,
                       ),
                     ),
                     SizedBox(width: 5),
-                    Text(
-                      "Sign Up",
+                    KText(
+                      text: "Sign Up",
                       style: GoogleFonts.poppins(
                         fontWeight: FontWeight.w700,
                         color: Constants.primaryAppColor,

@@ -2,6 +2,8 @@ import 'package:baratham_today/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'kText.dart';
+
 
 class CustomTextFormField extends StatefulWidget {
   final IconData? icon;
@@ -56,8 +58,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         children: [
           Row(
             children: [
-              Text(
-                widget.label,
+              KText(
+                text: widget.label,
                 style: GoogleFonts.poppins(
                   color: const Color(0xff4E4B66),
                   fontWeight: FontWeight.w400,

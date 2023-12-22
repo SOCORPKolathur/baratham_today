@@ -8,6 +8,8 @@ import 'package:baratham_today/widgets/secondary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../widgets/kText.dart';
+
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
 
@@ -37,16 +39,16 @@ class _LoginViewState extends State<LoginView> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: 30),
-                    Text(
-                      "HELLO",
+                    KText(
+                      text: "HELLO",
                       style: GoogleFonts.poppins(
                         color: Constants.secondaryAppColor,
                         fontWeight: FontWeight.w700,
                         fontSize: 45,
                       ),
                     ),
-                    Text(
-                      "Again!",
+                    KText(
+                      text: "Again!",
                       style: GoogleFonts.poppins(
                         color: Constants.primaryAppColor,
                         fontWeight: FontWeight.w700,
@@ -54,8 +56,8 @@ class _LoginViewState extends State<LoginView> {
                       ),
                     ),
                     SizedBox(height: 10),
-                    Text(
-                      "Welcome back you've \n been missed",
+                    KText(
+                      text: "Welcome back you've \n been missed",
                       style: GoogleFonts.poppins(
                         color: Constants.bodyTextColor,
                         fontWeight: FontWeight.w400,
@@ -103,8 +105,8 @@ class _LoginViewState extends State<LoginView> {
                               splashRadius: 2,
                               visualDensity: VisualDensity.compact,
                             ),
-                            Text(
-                              "Remember Me",
+                            KText(
+                              text: "Remember Me",
                               style: GoogleFonts.poppins(
                                   color: Constants.bodyTextColor,
                               ),
@@ -112,8 +114,8 @@ class _LoginViewState extends State<LoginView> {
                           ],
                         ),
                         Expanded(child: Container()),
-                        Text(
-                          "Forgot Password?",
+                        KText(
+                          text: "Forgot Password?",
                           style: GoogleFonts.poppins(
                             color: const Color(0xff5890FF)
                           ),
@@ -131,8 +133,8 @@ class _LoginViewState extends State<LoginView> {
                 ),
                 SizedBox(height: 15),
                 Center(
-                  child: Text(
-                    "Or Continue with",
+                  child: KText(
+                    text: "Or Continue with",
                     style: GoogleFonts.poppins(
                       color: Constants.bodyTextColor,
                     ),
@@ -158,8 +160,8 @@ class _LoginViewState extends State<LoginView> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      "don't have an account?",
+                    KText(
+                      text: "don't have an account?",
                       style: GoogleFonts.poppins(
                         fontWeight: FontWeight.w500,
                         color: Constants.bodyTextColor,
@@ -170,8 +172,8 @@ class _LoginViewState extends State<LoginView> {
                       onTap: (){
                         Navigator.push(context, MaterialPageRoute(builder: (ctx)=> const SignUpView()));
                       },
-                      child: Text(
-                        "Sign Up",
+                      child: KText(
+                        text: "Sign Up",
                         style: GoogleFonts.poppins(
                           fontWeight: FontWeight.w700,
                           color: Constants.primaryAppColor,

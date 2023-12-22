@@ -1,13 +1,14 @@
 import 'package:baratham_today/models/comments_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../constants.dart';
+import 'kText.dart';
 
 class CommentTileWidget extends StatefulWidget {
-  const CommentTileWidget({super.key, required this.comment});
+  const CommentTileWidget({super.key, required this.comment,required this.onReply});
 
   final CommentModel comment;
+  final Function onReply;
 
   @override
   State<CommentTileWidget> createState() => _CommentTileWidgetState();
@@ -33,8 +34,8 @@ class _CommentTileWidgetState extends State<CommentTileWidget> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  widget.comment.userName!,
+                KText(
+                  text: widget.comment.userName!,
                   style: GoogleFonts.poppins(
                     fontSize: 15,
                     fontWeight: FontWeight.w600,
@@ -42,8 +43,8 @@ class _CommentTileWidgetState extends State<CommentTileWidget> {
                   ),
                 ),
                 SizedBox(height: 5),
-                Text(
-                  widget.comment.message!,
+                KText(
+                  text: widget.comment.message!,
                   style: GoogleFonts.poppins(
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
@@ -53,8 +54,8 @@ class _CommentTileWidgetState extends State<CommentTileWidget> {
                 SizedBox(height: 10),
                 Row(
                   children: [
-                    Text(
-                      "4w",
+                    KText(
+                      text: "4w",
                       style: GoogleFonts.poppins(
                         fontSize: 15,
                         fontWeight: FontWeight.w400,
@@ -67,8 +68,8 @@ class _CommentTileWidgetState extends State<CommentTileWidget> {
                       color: Constants.bodyTextColor,
                       size: 15,
                     ),
-                    Text(
-                      " ${widget.comment.likes!.length} likes",
+                    KText(
+                      text: " ${widget.comment.likes!.length} likes",
                       style: GoogleFonts.poppins(
                         fontSize: 15,
                         fontWeight: FontWeight.w400,
@@ -76,17 +77,26 @@ class _CommentTileWidgetState extends State<CommentTileWidget> {
                       ),
                     ),
                     SizedBox(width: 10),
-                    Icon(
-                      Icons.reply_outlined,
-                      color: Constants.bodyTextColor,
-                      size: 15,
-                    ),
-                    Text(
-                      " reply",
-                      style: GoogleFonts.poppins(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w400,
-                        color: Constants.bodyTextColor,
+                    InkWell(
+                      onTap: (){
+                        widget.onReply();
+                      },
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.reply_outlined,
+                            color: Constants.bodyTextColor,
+                            size: 15,
+                          ),
+                          KText(
+                            text: " reply",
+                            style: GoogleFonts.poppins(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                              color: Constants.bodyTextColor,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -96,8 +106,8 @@ class _CommentTileWidgetState extends State<CommentTileWidget> {
                   children: [
                     Visibility(
                       visible: widget.comment.replies!.isNotEmpty,
-                      child: Text(
-                        "${widget.comment.replies!.length} replies",
+                      child: KText(
+                        text: "${widget.comment.replies!.length} replies",
                         style: GoogleFonts.poppins(
                           color: Colors.blue,
                         ),
@@ -112,8 +122,8 @@ class _CommentTileWidgetState extends State<CommentTileWidget> {
                             widget.comment.viewComments = true;
                           });
                         },
-                        child: Text(
-                          "View All",
+                        child: KText(
+                          text: "View All",
                           style: GoogleFonts.poppins(
                             color: Colors.blue,
                           ),
@@ -143,8 +153,8 @@ class _CommentTileWidgetState extends State<CommentTileWidget> {
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        widget.comment.replies![j].userName!,
+                                      KText(
+                                        text: widget.comment.replies![j].userName!,
                                         style: GoogleFonts.poppins(
                                           fontSize: 15,
                                           fontWeight: FontWeight.w600,
@@ -152,8 +162,8 @@ class _CommentTileWidgetState extends State<CommentTileWidget> {
                                         ),
                                       ),
                                       SizedBox(height: 5),
-                                      Text(
-                                        widget.comment.replies![j].message!,
+                                      KText(
+                                        text: widget.comment.replies![j].message!,
                                         style: GoogleFonts.poppins(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w400,
@@ -163,8 +173,8 @@ class _CommentTileWidgetState extends State<CommentTileWidget> {
                                       SizedBox(height: 10),
                                       Row(
                                         children: [
-                                          Text(
-                                            "4w",
+                                          KText(
+                                            text: "4w",
                                             style: GoogleFonts.poppins(
                                               fontSize: 15,
                                               fontWeight: FontWeight.w400,
@@ -177,8 +187,8 @@ class _CommentTileWidgetState extends State<CommentTileWidget> {
                                             color: Constants.bodyTextColor,
                                             size: 15,
                                           ),
-                                          Text(
-                                            " ${widget.comment.replies![j].likes!.length} likes",
+                                          KText(
+                                            text: " ${widget.comment.replies![j].likes!.length} likes",
                                             style: GoogleFonts.poppins(
                                               fontSize: 15,
                                               fontWeight: FontWeight.w400,
@@ -191,8 +201,8 @@ class _CommentTileWidgetState extends State<CommentTileWidget> {
                                             color: Constants.bodyTextColor,
                                             size: 15,
                                           ),
-                                          Text(
-                                            " reply",
+                                          KText(
+                                            text: " reply",
                                             style: GoogleFonts.poppins(
                                               fontSize: 15,
                                               fontWeight: FontWeight.w400,
