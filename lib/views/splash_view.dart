@@ -37,16 +37,16 @@ class _SplashViewState extends State<SplashView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            SizedBox(height: 20),
+            SizedBox(height: height/37.8),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
+              padding: EdgeInsets.symmetric(horizontal: width/12),
               child: Column(
                 children: [
                   KText(
                     text: "Baratham",
                     style: GoogleFonts.deliusSwashCaps(
                       color: Constants.primaryAppColor,
-                      fontSize: 60,
+                      fontSize: width/6,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
@@ -57,7 +57,7 @@ class _SplashViewState extends State<SplashView> {
                         text: "Today",
                         style: GoogleFonts.deliusSwashCaps(
                           color: Constants.secondaryAppColor,
-                          fontSize: 30,
+                          fontSize: width/12,
                           fontWeight: FontWeight.w900,
                         ),
                       ),
@@ -70,7 +70,7 @@ class _SplashViewState extends State<SplashView> {
               text: "--  Your NEWS Partner  --",
               style: GoogleFonts.justAnotherHand(
                 color: Constants.secondaryAppColor,
-                fontSize: 27,
+                fontSize: width/13.33333333333333,
                 fontWeight: FontWeight.w400,
               ),
             ),

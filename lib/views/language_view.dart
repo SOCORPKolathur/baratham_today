@@ -106,7 +106,7 @@ class _LanguagesViewState extends State<LanguagesView> {
         title: Text(
           "Select Your Language",
           style: GoogleFonts.poppins(
-            fontSize: 18,
+            fontSize: width/20,
             fontWeight: FontWeight.w700,
             color: Constants.bodyTextColor,
           ),
@@ -116,7 +116,7 @@ class _LanguagesViewState extends State<LanguagesView> {
         height: height,
         width: width,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+          padding: EdgeInsets.symmetric(horizontal: width/24,vertical: height/75.6),
           child: Column(
             children: [
               SearchWidget(
@@ -145,14 +145,14 @@ class _LanguagesViewState extends State<LanguagesView> {
                           Navigator.push(context, MaterialPageRoute(builder: (ctx)=> const ChooseTopicsView()));
                         },
                         child: Container(
-                          height: 40,
+                          height: height/18.9,
                           width: width,
                           decoration: BoxDecoration(
                             color: selectedIndex == i ? Colors.red : Colors.transparent,
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: EdgeInsets.symmetric(horizontal: width/45, vertical: height/94.5),
                             child: Text(
                               languagesList[i].orgName!,
                               style: GoogleFonts.poppins(

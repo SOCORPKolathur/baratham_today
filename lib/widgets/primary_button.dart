@@ -25,7 +25,7 @@ class _PrimaryButtonState extends State<PrimaryButton> {
         widget.onTap();
       },
       child: Container(
-        height: 50,
+        height: height/15.12,
         width: width,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
@@ -37,7 +37,7 @@ class _PrimaryButtonState extends State<PrimaryButton> {
             style: GoogleFonts.poppins(
               color: Constants.primaryWhite,
               fontWeight: FontWeight.w600,
-              fontSize: 17,
+              fontSize: width/21.17647058823529,
             ),
           ),
         ),

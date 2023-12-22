@@ -28,7 +28,7 @@ class _SignUpViewState extends State<SignUpView> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+          padding: EdgeInsets.symmetric(horizontal: width/24, vertical: height/75.6),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,27 +36,27 @@ class _SignUpViewState extends State<SignUpView> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 30),
+                    SizedBox(height: height/25.2),
                     KText(
                       text: "HELLO!",
                       style: GoogleFonts.poppins(
                         color: Constants.primaryAppColor,
                         fontWeight: FontWeight.w700,
-                        fontSize: 45,
+                        fontSize: width/8,
                       ),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: height/75.6),
                     KText(
                       text: "Signup to get started",
                       style: GoogleFonts.poppins(
                         color: Constants.bodyTextColor,
                         fontWeight: FontWeight.w400,
-                        fontSize: 20,
+                        fontSize: width/18,
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 30),
+                SizedBox(height: height/25.2),
                 CustomTextFormField(
                   label: "Username",
                   required: true,
@@ -69,7 +69,7 @@ class _SignUpViewState extends State<SignUpView> {
 
                   },
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: height/37.8),
                 CustomTextFormField(
                   label: "Password",
                   required: true,
@@ -78,9 +78,9 @@ class _SignUpViewState extends State<SignUpView> {
                   validator: (val){},
                   onSubmitted: (val){},
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: height/75.6),
                 Padding(
-                  padding: const EdgeInsets.only(right: 15),
+                  padding: EdgeInsets.only(right: width/24),
                   child: SizedBox(
                     width: width,
                     child: Row(
@@ -107,14 +107,14 @@ class _SignUpViewState extends State<SignUpView> {
                     ),
                   ),
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: height/75.6),
                 PrimaryButton(
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (ctx)=> const HomeView()));
                   },
                   title: "Sign Up",
                 ),
-                SizedBox(height: 15),
+                SizedBox(height: height/50.4),
                 Center(
                   child: KText(
                     text: "Or Continue with",
@@ -123,7 +123,7 @@ class _SignUpViewState extends State<SignUpView> {
                     ),
                   ),
                 ),
-                SizedBox(height: 15),
+                SizedBox(height: height/50.4),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -139,7 +139,7 @@ class _SignUpViewState extends State<SignUpView> {
                     )
                   ],
                 ),
-                SizedBox(height: 15),
+                SizedBox(height: height/50.4),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -150,7 +150,7 @@ class _SignUpViewState extends State<SignUpView> {
                         color: Constants.bodyTextColor,
                       ),
                     ),
-                    SizedBox(width: 5),
+                    SizedBox(width: width/72),
                     KText(
                       text: "Sign Up",
                       style: GoogleFonts.poppins(

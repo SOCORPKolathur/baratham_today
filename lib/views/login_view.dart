@@ -7,7 +7,6 @@ import 'package:baratham_today/widgets/primary_button.dart';
 import 'package:baratham_today/widgets/secondary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../widgets/kText.dart';
 
 class LoginView extends StatefulWidget {
@@ -30,7 +29,7 @@ class _LoginViewState extends State<LoginView> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+          padding: EdgeInsets.symmetric(horizontal: width/24, vertical: height/75.6),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,13 +37,13 @@ class _LoginViewState extends State<LoginView> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 30),
+                    SizedBox(height: height/25.2),
                     KText(
                       text: "HELLO",
                       style: GoogleFonts.poppins(
                         color: Constants.secondaryAppColor,
                         fontWeight: FontWeight.w700,
-                        fontSize: 45,
+                        fontSize: width/8,
                       ),
                     ),
                     KText(
@@ -52,21 +51,21 @@ class _LoginViewState extends State<LoginView> {
                       style: GoogleFonts.poppins(
                         color: Constants.primaryAppColor,
                         fontWeight: FontWeight.w700,
-                        fontSize: 45,
+                        fontSize: width/8,
                       ),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: height/75.6),
                     KText(
                       text: "Welcome back you've \n been missed",
                       style: GoogleFonts.poppins(
                         color: Constants.bodyTextColor,
                         fontWeight: FontWeight.w400,
-                        fontSize: 20,
+                        fontSize: width/18,
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 30),
+                SizedBox(height: height/25.2),
                 CustomTextFormField(
                   label: "Username",
                   required: true,
@@ -79,7 +78,7 @@ class _LoginViewState extends State<LoginView> {
             
                   },
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: height/37.8),
                 CustomTextFormField(
                   label: "Phone",
                   required: true,
@@ -88,9 +87,9 @@ class _LoginViewState extends State<LoginView> {
                   validator: (val){},
                   onSubmitted: (val){},
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: height/75.6),
                 Padding(
-                  padding: const EdgeInsets.only(right: 15),
+                  padding: EdgeInsets.only(right: width/24),
                   child: SizedBox(
                     width: width,
                     child: Row(
@@ -124,14 +123,14 @@ class _LoginViewState extends State<LoginView> {
                     ),
                   ),
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: height/75.6),
                 PrimaryButton(
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (ctx)=> OtpVerificationView(phone: phoneController.text,firstName: userNameController.text)));
                   },
                   title: "Login",
                 ),
-                SizedBox(height: 15),
+                SizedBox(height: height/50.4),
                 Center(
                   child: KText(
                     text: "Or Continue with",
@@ -140,7 +139,7 @@ class _LoginViewState extends State<LoginView> {
                     ),
                   ),
                 ),
-                SizedBox(height: 15),
+                SizedBox(height: height/50.4),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -156,7 +155,7 @@ class _LoginViewState extends State<LoginView> {
                     )
                   ],
                 ),
-                SizedBox(height: 15),
+                SizedBox(height: height/50.4),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -167,7 +166,7 @@ class _LoginViewState extends State<LoginView> {
                         color: Constants.bodyTextColor,
                       ),
                     ),
-                    SizedBox(width: 5),
+                    SizedBox(width: width/72),
                     InkWell(
                       onTap: (){
                         Navigator.push(context, MaterialPageRoute(builder: (ctx)=> const SignUpView()));

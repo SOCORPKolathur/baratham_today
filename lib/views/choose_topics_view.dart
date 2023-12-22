@@ -47,7 +47,7 @@ class _ChooseTopicsViewState extends State<ChooseTopicsView> {
         title: KText(
           text: "Choose Your Topics",
           style: GoogleFonts.poppins(
-            fontSize: 18,
+            fontSize: width/20,
             fontWeight: FontWeight.w700,
             color: Constants.bodyTextColor,
           ),
@@ -57,7 +57,7 @@ class _ChooseTopicsViewState extends State<ChooseTopicsView> {
         height: height,
         width: width,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+          padding: EdgeInsets.symmetric(horizontal: width/24,vertical: height/76.5),
           child: Column(
             children: [
               SearchWidget(

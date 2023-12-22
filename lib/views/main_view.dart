@@ -35,7 +35,6 @@ class _MainViewState extends State<MainView> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      //body: pages[_selectedIndex],
         body: PageView.builder(
           controller: controller,
           itemCount: pages.length,
@@ -60,8 +59,7 @@ class _MainViewState extends State<MainView> {
               duration: const Duration(seconds: 1),
               decoration: const BoxDecoration(
                 //color: Color(0xffFFFFFF),
-                  borderRadius:
-                  BorderRadius.vertical(bottom: Radius.elliptical(150, 60))
+                  borderRadius: BorderRadius.vertical(bottom: Radius.elliptical(150, 60))
                 // borderRadius: BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(25))
               ),
               child: Stack(

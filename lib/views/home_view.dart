@@ -54,7 +54,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
           height: height,
           width: width,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            padding: EdgeInsets.symmetric(horizontal: width/24, vertical: height/75.6),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -64,7 +64,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                   children: [
                     const TitleWidget(),
                     Padding(
-                      padding: const EdgeInsets.only(right: 5),
+                      padding: EdgeInsets.only(right: width/72),
                       child: InkWell(
                         onTap: (){
                           Navigator.push(context, MaterialPageRoute(builder: (ctx)=> NotificationsView(userDocId: FirebaseAuth.instance.currentUser!.uid)));
@@ -73,8 +73,8 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                           elevation: 2,
                           borderRadius: BorderRadius.circular(10),
                           child: Container(
-                            height: 45,
-                            width: 45,
+                            height: height/16.8,
+                            width: width/8,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: Constants.primaryWhite,
@@ -90,7 +90,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: height/37.8),
                 Expanded(
                   child: Container(
                     child: SingleChildScrollView(
@@ -109,7 +109,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                               KText(
                                 text: "Trending",
                                 style: GoogleFonts.poppins(
-                                  fontSize: 17,
+                                  fontSize: width/21.17647058823529,
                                   fontWeight: FontWeight.w800,
                                   color: Constants.secondaryAppColor,
                                 ),
@@ -121,7 +121,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                                 child: KText(
                                   text: "See All",
                                   style: GoogleFonts.poppins(
-                                    fontSize: 15,
+                                    fontSize: width/24,
                                     fontWeight: FontWeight.w500,
                                     color: Constants.bodyTextColor,
                                   ),
@@ -129,7 +129,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                               ),
                             ],
                           ),
-                          SizedBox(height: 5),
+                          SizedBox(height: height/151.2),
                           StreamBuilder(
                             stream: FirebaseFirestore.instance.collection('News').snapshots(),
                             builder: (context, snap) {
@@ -144,7 +144,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                                     children: [
                                       CarouselSlider(
                                         options: CarouselOptions(
-                                          height: 200.0,
+                                          height: height/3.78,
                                           viewportFraction: 1,
                                           autoPlay: news.imgs!.isEmpty ? false : true,
                                         ),
@@ -152,7 +152,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                                           return Builder(
                                             builder: (BuildContext context) {
                                               return Container(
-                                                height: 200,
+                                                height: height/3.78,
                                                 width: width,
                                                 decoration: BoxDecoration(
                                                     borderRadius: BorderRadius.circular(10),
@@ -168,23 +168,23 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                                           );
                                         }).toList(),
                                       ),
-                                      SizedBox(height: 5),
+                                      SizedBox(height: height/151.2),
                                       KText(
                                         text: news.location!,
                                         style: GoogleFonts.poppins(
-                                          fontSize: 14,
+                                          fontSize: width/25.71428571428571,
                                           fontWeight: FontWeight.w400,
                                           color: Constants.bodyTextColor,
                                         ),
                                       ),
-                                      SizedBox(height: 5),
+                                      SizedBox(height: height/151.2),
                                       SizedBox(
-                                        height: 30,
+                                        height: height/25.2,
                                         width: width,
                                         child: KText(
                                           text: news.title!,
                                           style: GoogleFonts.poppins(
-                                            fontSize: 17,
+                                            fontSize: width/21.17647058823529,
                                             fontWeight: FontWeight.w400,
                                             color: Constants.secondaryAppColor,
                                           ),
@@ -196,28 +196,28 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                                           Row(
                                             children: [
                                               CircleAvatar(
-                                                radius: 10,
+                                                radius: width/36,
                                                 backgroundImage: NetworkImage(news.channelImg!),
                                               ),
-                                              SizedBox(width: 5),
+                                              SizedBox(width: width/72),
                                               Row(
                                                 crossAxisAlignment: CrossAxisAlignment.center,
                                                 children: [
                                                   KText(
                                                     text: news.channelName!,
                                                     style: GoogleFonts.poppins(
-                                                      fontSize: 12,
+                                                      fontSize: width/30,
                                                       fontWeight: FontWeight.w600,
                                                       color: Constants.secondaryAppColor,
                                                     ),
                                                   ),
-                                                  SizedBox(width: 15),
-                                                  Icon(Icons.access_time_filled,size: 15,),
-                                                  SizedBox(width: 5),
+                                                  SizedBox(width: width/24),
+                                                  Icon(Icons.access_time_filled,size:  width/24),
+                                                  SizedBox(width: width/72),
                                                   KText(
                                                     text: "14m ago",
                                                     style: GoogleFonts.poppins(
-                                                      fontSize: 10,
+                                                      fontSize: width/36,
                                                       fontWeight: FontWeight.w500,
                                                       color: Constants.bodyTextColor,
                                                     ),
@@ -236,14 +236,14 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                               return Container();
                             }
                           ),
-                          SizedBox(height: 25),
+                          SizedBox(height: height/30.24),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               KText(
                                 text: "Latest",
                                 style: GoogleFonts.poppins(
-                                  fontSize: 17,
+                                  fontSize: width/21.17647058823529,
                                   fontWeight: FontWeight.w800,
                                   color: Constants.secondaryAppColor,
                                 ),
@@ -255,7 +255,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                                 child: KText(
                                   text: "See All",
                                   style: GoogleFonts.poppins(
-                                    fontSize: 15,
+                                    fontSize: width/24,
                                     fontWeight: FontWeight.w500,
                                     color: Constants.bodyTextColor,
                                   ),
@@ -263,9 +263,9 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                               ),
                             ],
                           ),
-                          SizedBox(height: 10),
+                          SizedBox(height: height/75.6),
                           SizedBox(
-                            height: 50,
+                            height: height/15.12,
                             child: TabBar(
                               tabAlignment: TabAlignment.start,
                               isScrollable: true,
@@ -274,14 +274,14 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                               unselectedLabelColor: Constants.bodyTextColor,
                               labelColor: Constants.primaryAppColor,
                               labelStyle: GoogleFonts.poppins(
-                                fontSize: 12,
+                                fontSize: width/30,
                                 fontWeight: FontWeight.w600,
                               ),
                               dividerHeight: 0,
                               tabs: tabs.map((e) => Tab(text: e)).toList(),
                             ),
                           ),
-                          SizedBox(height: 10),
+                          SizedBox(height: height/75.6),
                           SizedBox(
                             height: height * 0.56,
                             width: size.width,
@@ -312,6 +312,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
   }
 
   buildAllNewsWidget(){
+    double height = MediaQuery.of(context).size.height;
     return StreamBuilder(
       stream: FirebaseFirestore.instance.collection('News').orderBy("timestamp", descending: true).snapshots(),
       builder: (context, snap) {
@@ -321,7 +322,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
             itemBuilder: (ctx, i){
               NewsModel news = NewsModel.fromJson(snap.data!.docs[i].data());
               return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8),
+                padding: EdgeInsets.symmetric(vertical: height/94.5),
                 child: NewsTileWidget(news: news),
               );
             },
@@ -332,6 +333,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
   }
 
   buildSportsNewsWidget(){
+    double height = MediaQuery.of(context).size.height;
     return StreamBuilder(
         stream: FirebaseFirestore.instance.collection('News').where("category", isEqualTo: 'Sports').snapshots(),
         builder: (context, snap) {
@@ -341,7 +343,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
               itemBuilder: (ctx, i){
                 NewsModel news = NewsModel.fromJson(snap.data!.docs[i].data());
                 return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  padding: EdgeInsets.symmetric(vertical: height/94.5),
                   child: NewsTileWidget(news: news),
                 );
               },
@@ -352,6 +354,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
   }
 
   buildPoliticsNewsWidget(){
+    double height = MediaQuery.of(context).size.height;
     return StreamBuilder(
         stream: FirebaseFirestore.instance.collection('News').where("category", isEqualTo: 'Politics').snapshots(),
         builder: (context, snap) {
@@ -361,7 +364,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
               itemBuilder: (ctx, i){
                 NewsModel news = NewsModel.fromJson(snap.data!.docs[i].data());
                 return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  padding: EdgeInsets.symmetric(vertical: height/94.5),
                   child: NewsTileWidget(news: news),
                 );
               },
@@ -372,6 +375,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
   }
 
   buildBusinessNewsWidget(){
+    double height = MediaQuery.of(context).size.height;
     return StreamBuilder(
         stream: FirebaseFirestore.instance.collection('News').where("category", isEqualTo: 'Business').snapshots(),
         builder: (context, snap) {
@@ -381,7 +385,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
               itemBuilder: (ctx, i){
                 NewsModel news = NewsModel.fromJson(snap.data!.docs[i].data());
                 return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  padding: EdgeInsets.symmetric(vertical: height/94.5),
                   child: NewsTileWidget(news: news),
                 );
               },
@@ -392,6 +396,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
   }
 
   buildHealthNewsWidget(){
+    double height = MediaQuery.of(context).size.height;
     return StreamBuilder(
         stream: FirebaseFirestore.instance.collection('News').where("category", isEqualTo: 'Health').snapshots(),
         builder: (context, snap) {
@@ -401,7 +406,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
               itemBuilder: (ctx, i){
                 NewsModel news = NewsModel.fromJson(snap.data!.docs[i].data());
                 return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  padding: EdgeInsets.symmetric(vertical: height/94.5),
                   child: NewsTileWidget(news: news),
                 );
               },
@@ -412,6 +417,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
   }
 
   buildTravelNewsWidget(){
+    double height = MediaQuery.of(context).size.height;
     return StreamBuilder(
         stream: FirebaseFirestore.instance.collection('News').where("category", isEqualTo: 'Travel').snapshots(),
         builder: (context, snap) {
@@ -421,7 +427,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
               itemBuilder: (ctx, i){
                 NewsModel news = NewsModel.fromJson(snap.data!.docs[i].data());
                 return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  padding: EdgeInsets.symmetric(vertical: height/94.5),
                   child: NewsTileWidget(news: news),
                 );
               },
@@ -432,6 +438,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
   }
 
   buildScienceNewsWidget(){
+    double height = MediaQuery.of(context).size.height;
     return StreamBuilder(
         stream: FirebaseFirestore.instance.collection('News').where("category", isEqualTo: 'Science').snapshots(),
         builder: (context, snap) {
@@ -441,7 +448,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
               itemBuilder: (ctx, i){
                 NewsModel news = NewsModel.fromJson(snap.data!.docs[i].data());
                 return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  padding: EdgeInsets.symmetric(vertical: height/94.5),
                   child: NewsTileWidget(news: news),
                 );
               },

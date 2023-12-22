@@ -8,8 +8,11 @@ class TitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    double height = size.height;
+    double width = size.width;
     return Container(
-      width: 180,
+      width: width/2,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -17,7 +20,7 @@ class TitleWidget extends StatelessWidget {
             "Baratham",
             style: GoogleFonts.deliusSwashCaps(
               color: Constants.primaryAppColor,
-              fontSize: 35,
+              fontSize: width/10.28571428571429,
               fontWeight: FontWeight.w700,
             ),
           ),
@@ -28,7 +31,7 @@ class TitleWidget extends StatelessWidget {
                 "Today",
                 style: GoogleFonts.deliusSwashCaps(
                   color: Constants.secondaryAppColor,
-                  fontSize: 20,
+                  fontSize: width/18,
                   fontWeight: FontWeight.w800,
                 ),
               ),

@@ -26,7 +26,7 @@ class _SecondaryButtonState extends State<SecondaryButton> {
         widget.onTap();
       },
       child: Container(
-        height: 45,
+        height: height/16.8,
         width: width * 0.42,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
@@ -37,8 +37,8 @@ class _SecondaryButtonState extends State<SecondaryButton> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                height: 20,
-                width: 20,
+                height: height/37.8,
+                width: width/18,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
@@ -48,13 +48,13 @@ class _SecondaryButtonState extends State<SecondaryButton> {
                   )
                 ),
               ),
-              SizedBox(width: 10),
+              SizedBox(width: width/36),
               KText(
                 text: widget.title,
                 style: GoogleFonts.poppins(
                   color: Constants.bodyTextColor,
                   fontWeight: FontWeight.w600,
-                  fontSize: 14,
+                  fontSize: width/25.71428571428571,
                 ),
               ),
             ],

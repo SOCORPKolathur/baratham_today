@@ -31,14 +31,14 @@ class _NewsListViewState extends State<NewsListView> {
         title: KText(
           text: widget.title,
           style: GoogleFonts.poppins(
-            fontSize: 25,
+            fontSize: width/14.4,
             fontWeight: FontWeight.w800,
             color: Constants.secondaryAppColor,
           ),
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        padding: EdgeInsets.symmetric(horizontal: width/24, vertical: height/75.6),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -56,13 +56,13 @@ class _NewsListViewState extends State<NewsListView> {
                                 Navigator.push(context, MaterialPageRoute(builder: (ctx)=> NewsDetailsView(news: news)));
                               },
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 8),
+                                padding: EdgeInsets.symmetric(vertical: height/94.5),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     CarouselSlider(
                                       options: CarouselOptions(
-                                        height: 200.0,
+                                        height: height/3.78,
                                         viewportFraction: 1,
                                         autoPlay: news.imgs!.isEmpty ? false : true,
                                       ),
@@ -70,7 +70,7 @@ class _NewsListViewState extends State<NewsListView> {
                                         return Builder(
                                           builder: (BuildContext context) {
                                             return Container(
-                                              height: 200,
+                                              height: height/3.78,
                                               width: width,
                                               decoration: BoxDecoration(
                                                   borderRadius: BorderRadius.circular(10),
@@ -86,23 +86,23 @@ class _NewsListViewState extends State<NewsListView> {
                                         );
                                       }).toList(),
                                     ),
-                                    SizedBox(height: 5),
+                                    SizedBox(height: height/151.2),
                                     KText(
                                       text: news.location!,
                                       style: GoogleFonts.poppins(
-                                        fontSize: 14,
+                                        fontSize: width/25.71428571428571,
                                         fontWeight: FontWeight.w400,
                                         color: Constants.bodyTextColor,
                                       ),
                                     ),
-                                    SizedBox(height: 5),
+                                    SizedBox(height: height/151.2),
                                     SizedBox(
-                                      height: 30,
+                                      height: height/25.2,
                                       width: width,
                                       child: KText(
                                         text: news.title!,
                                         style: GoogleFonts.poppins(
-                                          fontSize: 17,
+                                          fontSize: width/21.17647058823529,
                                           fontWeight: FontWeight.w400,
                                           color: Constants.secondaryAppColor,
                                         ),
@@ -114,28 +114,28 @@ class _NewsListViewState extends State<NewsListView> {
                                         Row(
                                           children: [
                                             CircleAvatar(
-                                              radius: 10,
+                                              radius: width/36,
                                               backgroundImage: NetworkImage(news.channelImg!),
                                             ),
-                                            SizedBox(width: 5),
+                                            SizedBox(width: width/72),
                                             Row(
                                               crossAxisAlignment: CrossAxisAlignment.center,
                                               children: [
                                                 KText(
                                                   text: news.channelName!,
                                                   style: GoogleFonts.poppins(
-                                                    fontSize: 12,
+                                                    fontSize: width/30,
                                                     fontWeight: FontWeight.w600,
                                                     color: Constants.secondaryAppColor,
                                                   ),
                                                 ),
-                                                SizedBox(width: 15),
-                                                Icon(Icons.access_time_filled,size: 15,),
-                                                SizedBox(width: 5),
+                                                SizedBox(width: width/24),
+                                                Icon(Icons.access_time_filled,size: width/24),
+                                                SizedBox(width: width/72),
                                                 KText(
                                                   text: "14m ago",
                                                   style: GoogleFonts.poppins(
-                                                    fontSize: 10,
+                                                    fontSize: width/36,
                                                     fontWeight: FontWeight.w500,
                                                     color: Constants.bodyTextColor,
                                                   ),

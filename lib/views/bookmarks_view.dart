@@ -32,14 +32,14 @@ class _BookmarksViewState extends State<BookmarksView> {
         title: KText(
           text: "Bookmark",
           style: GoogleFonts.poppins(
-            fontSize: 25,
+            fontSize: width/14.4,
             fontWeight: FontWeight.w800,
             color: Constants.secondaryAppColor,
           ),
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        padding: EdgeInsets.symmetric(horizontal: width/24, vertical: height/75.6),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -57,7 +57,7 @@ class _BookmarksViewState extends State<BookmarksView> {
                           itemBuilder: (context, i) {
                             NewsModel news = NewsModel.fromJson(snap.data!.docs[i].data());
                             return Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              padding: EdgeInsets.symmetric(vertical: height/75.6),
                               child: NewsTileWidget(news: news),
                             );
                           }

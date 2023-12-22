@@ -26,7 +26,7 @@ class _NotificationsViewState extends State<NotificationsView> {
         title: KText(
           text: "Notifications",
           style: GoogleFonts.poppins(
-            fontSize: 25,
+            fontSize: size.width/14.4,
             fontWeight: FontWeight.w800,
             color: Constants.secondaryAppColor,
           ),
@@ -110,7 +110,7 @@ class _NotificationsViewState extends State<NotificationsView> {
                                   text: snap.data!.docs[i]['date'],
                                   style: GoogleFonts.openSans(
                                     color: Colors.grey,
-                                    fontSize: 15,
+                                    fontSize: size.width/24,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -118,7 +118,7 @@ class _NotificationsViewState extends State<NotificationsView> {
                                   text: snap.data!.docs[i]['time'],
                                   style: GoogleFonts.openSans(
                                     color: Colors.grey,
-                                    fontSize: 15,
+                                    fontSize: size.width/24,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -137,7 +137,7 @@ class _NotificationsViewState extends State<NotificationsView> {
                               text: snap.data!.docs[i]['content'],
                               style: GoogleFonts.openSans(
                                 color: const Color(0xff454545),
-                                fontSize: 15,
+                                fontSize: size.width/24,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),

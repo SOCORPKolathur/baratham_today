@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:baratham_today/models/comments_model.dart';
 import 'package:baratham_today/models/news_model.dart';
 import 'package:baratham_today/models/user_model.dart';
@@ -7,11 +8,14 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-
+import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
 import '../constants.dart';
 import '../widgets/kText.dart';
+import 'package:http/http.dart' as http;
 
 class NewsDetailsView extends StatefulWidget {
   const NewsDetailsView({super.key, required this.news});
@@ -62,7 +66,18 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () async {
+              final url=Uri.parse(widget.news.imgs![0]);
+              final res = await http.get(url);
+              final bytes = res.bodyBytes;
+              final temp = await getTemporaryDirectory();
+              final path="${temp.path}/image.jpg";
+              File(path).writeAsBytesSync(bytes);
+              await Share.shareFiles([path],text: widget.news.description!,subject: widget.news.title!);
+              setState(() {
+                //shareisclisked=false;
+              });
+            },
             icon: Image.asset(
               "assets/share_ico.png",
             ),
@@ -85,8 +100,7 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
                   Expanded(
                     child: SingleChildScrollView(
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 15, vertical: 10),
+                        padding: EdgeInsets.symmetric(horizontal: width/24, vertical: height/75.6),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -96,18 +110,18 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
                                 Row(
                                   children: [
                                     CircleAvatar(
-                                      radius: 25,
+                                      radius: width/14.4,
                                       backgroundImage:
                                       NetworkImage(widget.news.channelImg!),
                                     ),
-                                    SizedBox(width: 5),
+                                    SizedBox(width: width/72),
                                     Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         KText(
                                           text: widget.news.channelName!,
                                           style: GoogleFonts.poppins(
-                                            fontSize: 16,
+                                            fontSize: width/22.5,
                                             fontWeight: FontWeight.w700,
                                             color: Constants.secondaryAppColor,
                                           ),
@@ -115,7 +129,7 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
                                         KText(
                                           text: "14m ago",
                                           style: GoogleFonts.poppins(
-                                            fontSize: 14,
+                                            fontSize: width/25.71428571428571,
                                             fontWeight: FontWeight.w500,
                                             color: Constants.bodyTextColor,
                                           ),
@@ -125,19 +139,18 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
                                   ],
                                 ),
                                 Container(
-                                  height: 35,
+                                  height: height/21.6,
                                   decoration: BoxDecoration(
                                     color: const Color(0xff1877F2),
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                   child: Center(
                                     child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 10),
+                                      padding: EdgeInsets.symmetric(horizontal: width/36),
                                       child: KText(
                                         text: "Following",
                                         style: GoogleFonts.poppins(
-                                          fontSize: 16,
+                                          fontSize: width/22.5,
                                           fontWeight: FontWeight.w700,
                                           color: Constants.primaryWhite,
                                         ),
@@ -147,10 +160,10 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
                                 )
                               ],
                             ),
-                            SizedBox(height: 10),
+                            SizedBox(height: height/75.6),
                             CarouselSlider(
                               options: CarouselOptions(
-                                height: 200.0,
+                                height: height/3.78,
                                 viewportFraction: 1,
                                 autoPlay: widget.news.imgs!.isEmpty ? false : true,
                               ),
@@ -158,7 +171,7 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
                                 return Builder(
                                   builder: (BuildContext context) {
                                     return Container(
-                                      height: 200,
+                                      height: height/3.78,
                                       width: width,
                                       decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(10),
@@ -171,29 +184,29 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
                                 );
                               }).toList(),
                             ),
-                            SizedBox(height: 5),
+                            SizedBox(height: height/151.2),
                             KText(
                               text: widget.news.location!,
                               style: GoogleFonts.poppins(
-                                fontSize: 14,
+                                fontSize: width/25.71428571428571,
                                 fontWeight: FontWeight.w400,
                                 color: Constants.bodyTextColor,
                               ),
                             ),
-                            SizedBox(height: 5),
+                            SizedBox(height: height/151.2),
                             KText(
                               text: widget.news.title!,
                               style: GoogleFonts.poppins(
-                                fontSize: 19,
+                                fontSize: width/18.94736842105263,
                                 fontWeight: FontWeight.w600,
                                 color: Constants.secondaryAppColor,
                               ),
                             ),
-                            SizedBox(height: 10),
+                            SizedBox(height: height/75.6),
                             KText(
                               text: widget.news.description!,
                               style: GoogleFonts.poppins(
-                                fontSize: 15,
+                                fontSize: width/24,
                                 fontWeight: FontWeight.w400,
                                 color: Constants.bodyTextColor,
                               ),
@@ -206,7 +219,7 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
                   Material(
                     elevation: 2,
                     child: Container(
-                      height: 60,
+                      height: height/12.6,
                       decoration: BoxDecoration(
                         color: Constants.primaryWhite,
                       ),
@@ -215,7 +228,7 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
                         children: [
                           Row(
                             children: [
-                              SizedBox(width: 10),
+                              SizedBox(width: width/36),
                               IconButton(
                                 onPressed: () {
                                   setState(() {
@@ -225,18 +238,18 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
                                 icon: Icon(
                                   Icons.favorite_border,
                                   color: Colors.red,
-                                  size: 30,
+                                  size: width/12,
                                 ),
                               ),
                               KText(
                                 text: "${widget.news.likes!.length} likes",
                                 style: GoogleFonts.poppins(
-                                  fontSize: 14,
+                                  fontSize: width/25.71428571428571,
                                   fontWeight: FontWeight.w400,
                                   color: Constants.secondaryAppColor,
                                 ),
                               ),
-                              SizedBox(width: 10),
+                              SizedBox(width: width/36),
                               IconButton(
                                 onPressed: () {
                                   showModalBottomSheet<void>(
@@ -252,13 +265,13 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
                                 icon: Icon(
                                   Icons.chat_outlined,
                                   color: Constants.secondaryAppColor,
-                                  size: 30,
+                                  size: width/12,
                                 ),
                               ),
                               KText(
                                 text: "${commentsCount}",
                                 style: GoogleFonts.poppins(
-                                  fontSize: 14,
+                                  fontSize: width/25.71428571428571,
                                   fontWeight: FontWeight.w400,
                                   color: Constants.secondaryAppColor,
                                 ),
@@ -288,18 +301,18 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
                                               child: Icon(
                                                 isWishListed ? Icons.bookmark : Icons.bookmark_border,
                                                 color: Constants.secondaryAppColor,
-                                                size: 35,
+                                                size: width/10.28571428571429,
                                               ),
                                             ),
                                           ),
                                         ),
-                                        SizedBox(width: 10),
+                                        SizedBox(width: width/36),
                                       ],
                                     );
                                   }return Container();
                                 },
                               ),
-                              SizedBox(width: 10),
+                              SizedBox(width: width/36),
                             ],
                           )
                         ],
@@ -326,7 +339,7 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
     double height = MediaQuery.of(context).size.height;
     return Container(
         color: Constants.appBackgroundColor,
-        height: 1000,
+        height: height/0.756,
         width: width,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -336,8 +349,8 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                  height: 4,
-                  width: 50,
+                  height: height/189,
+                  width: width/7.2,
                   decoration: BoxDecoration(
                     color: Constants.secondaryAppColor,
                     borderRadius: BorderRadius.circular(10),
@@ -356,7 +369,7 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
                   if (snap.hasData) {
                     return Expanded(
                         child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      padding: EdgeInsets.symmetric(horizontal: width/45),
                       child: ListView.builder(
                         itemCount: snap.data!.docs.length,
                         itemBuilder: (ctx, i) {
@@ -383,34 +396,33 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
                 },
             ),
             Container(
-              height: 60,
+              height: height/12.6,
               width: width,
               color: Colors.white,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
+                padding: EdgeInsets.symmetric(horizontal: width/36),
                 child: Row(
                   children: [
                     Expanded(
                       child: Container(
-                        height: 50,
+                        height: height/15.12,
                         child: TextFormField(
                           autofocus: true,
                           focusNode: replyFocus,
                           controller: commentController,
                           decoration: InputDecoration(
-                            contentPadding: const EdgeInsets.symmetric(
-                                horizontal: 10, vertical: 4),
+                            contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                             border: const OutlineInputBorder(),
                             hintText: "Type your comment",
                             hintStyle: GoogleFonts.poppins(
                               color: Color(0xffA7A1A1),
-                              fontSize: 14,
+                              fontSize: width/25.71428571428571,
                             ),
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(width: 10),
+                    SizedBox(width: width/36),
                     InkWell(
                       onTap: () async {
                         CommentModel commentModel = CommentModel(
@@ -449,8 +461,8 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
                         });
                       },
                       child: Container(
-                        height: 50,
-                        width: 55,
+                        height: height/15.12,
+                        width: width/6.545454545454545,
                         decoration: BoxDecoration(
                           color: Color(0xff1877F2),
                           borderRadius: BorderRadius.circular(10),
@@ -465,7 +477,8 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
               ),
             ),
           ],
-        ));
+        ),
+    );
   }
 
   updateBookmarkList(NewsModel news, bool isWishListed){

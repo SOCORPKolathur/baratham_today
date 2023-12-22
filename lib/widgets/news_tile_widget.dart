@@ -27,13 +27,13 @@ class _NewsTileWidgetState extends State<NewsTileWidget> {
         Navigator.push(context, MaterialPageRoute(builder: (ctx)=> NewsDetailsView(news: widget.news)));
       },
       child: SizedBox(
-        height: 100,
+        height: height/7.56,
         width: width,
         child: Row(
           children: [
             Container(
-              height: 100,
-              width: 100,
+              height: height/7.56,
+              width: width/3.6,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                   image: DecorationImage(
@@ -44,7 +44,7 @@ class _NewsTileWidgetState extends State<NewsTileWidget> {
                   )
               ),
             ),
-            SizedBox(width: 5),
+            SizedBox(width: width/72),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,19 +52,19 @@ class _NewsTileWidgetState extends State<NewsTileWidget> {
                   KText(
                     text: widget.news.location!,
                     style: GoogleFonts.poppins(
-                      fontSize: 14,
+                      fontSize: width/25.71428571428571,
                       fontWeight: FontWeight.w400,
                       color: Constants.bodyTextColor,
                     ),
                   ),
-                  SizedBox(height: 5),
+                  SizedBox(height: height/151.2),
                   SizedBox(
-                    height: 50,
+                    height: height/15.12,
                     width: width,
                     child: KText(
                       text: widget.news.title!,
                       style: GoogleFonts.poppins(
-                        fontSize: 17,
+                        fontSize: width/21.17647058823529,
                         fontWeight: FontWeight.w400,
                         color: Constants.secondaryAppColor,
                       ),
@@ -76,28 +76,28 @@ class _NewsTileWidgetState extends State<NewsTileWidget> {
                       Row(
                         children: [
                           CircleAvatar(
-                            radius: 10,
+                            radius: width/36,
                             backgroundImage: NetworkImage(widget.news.channelImg!),
                           ),
-                          SizedBox(width: 5),
+                          SizedBox(width: width/72),
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               KText(
                                 text: widget.news.channelName!,
                                 style: GoogleFonts.poppins(
-                                  fontSize: 12,
+                                  fontSize: width/30,
                                   fontWeight: FontWeight.w600,
                                   color: Constants.secondaryAppColor,
                                 ),
                               ),
-                              SizedBox(width: 15),
-                              Icon(Icons.access_time_filled,size: 15,),
-                              SizedBox(width: 5),
+                              SizedBox(width: width/24),
+                              Icon(Icons.access_time_filled,size: width/24),
+                              SizedBox(width: width/72),
                               KText(
                                 text: "14m ago",
                                 style: GoogleFonts.poppins(
-                                  fontSize: 10,
+                                  fontSize: width/36,
                                   fontWeight: FontWeight.w500,
                                   color: Constants.bodyTextColor,
                                 ),

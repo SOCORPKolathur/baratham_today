@@ -1,5 +1,4 @@
 import 'package:baratham_today/constants.dart';
-import 'package:baratham_today/views/intro_view.dart';
 import 'package:baratham_today/views/main_view.dart';
 import 'package:baratham_today/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
@@ -38,14 +37,14 @@ class _VerificationComleteViewState extends State<VerificationComleteView> {
               children: [
                 SizedBox(height: height * 0.35),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  padding: EdgeInsets.symmetric(horizontal: width/12),
                   child: Column(
                     children: [
                       KText(
                         text: "Baratham",
                         style: GoogleFonts.deliusSwashCaps(
                           color: Constants.primaryAppColor,
-                          fontSize: 60,
+                          fontSize: width/6,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
@@ -56,7 +55,7 @@ class _VerificationComleteViewState extends State<VerificationComleteView> {
                             text: "Today",
                             style: GoogleFonts.deliusSwashCaps(
                               color: Constants.secondaryAppColor,
-                              fontSize: 30,
+                              fontSize: width/12,
                               fontWeight: FontWeight.w700,
                             ),
                           ),
@@ -65,14 +64,14 @@ class _VerificationComleteViewState extends State<VerificationComleteView> {
                     ],
                   ),
                 ),
-                SizedBox(height: 35),
+                SizedBox(height: height/21.6),
                 Column(
                   children: [
                     KText(
                       text: "Congratulations!",
                       style: GoogleFonts.poppins(
                         color: Constants.bodyTextColor,
-                        fontSize: 27,
+                        fontSize: width/13.33333333333333,
                         fontWeight: FontWeight.w700,
                       ),
                     ),
@@ -80,7 +79,7 @@ class _VerificationComleteViewState extends State<VerificationComleteView> {
                       text: "Your account is ready to use",
                       style: GoogleFonts.poppins(
                         color: Constants.bodyTextColor,
-                        fontSize: 13,
+                        fontSize: width/27.69230769230769,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -93,7 +92,7 @@ class _VerificationComleteViewState extends State<VerificationComleteView> {
                   },
                   title: "Go to Homepage",
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: height/75.6),
               ],
             ),
           ),

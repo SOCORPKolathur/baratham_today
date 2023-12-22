@@ -72,10 +72,16 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    double height = size.height;
+    double width = size.width;
     final defaultPinTheme = PinTheme(
-      width: 56,
-      height: 56,
-      textStyle: TextStyle(fontSize: 20, color: Constants.primaryWhite, fontWeight: FontWeight.w600),
+      width: width/6.428571428571429,
+      height: height/13.5,
+      textStyle: TextStyle(
+          fontSize: width/18,
+          color: Constants.primaryWhite,
+          fontWeight: FontWeight.w600,
+      ),
       decoration: BoxDecoration(
         color: Constants.primaryWhite,
         border: Border.all(
@@ -92,7 +98,7 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
     );
 
     final submittedPinTheme = defaultPinTheme.copyWith(
-      textStyle: TextStyle(fontSize: 20, color: Constants.primaryAppColor, fontWeight: FontWeight.w600),
+      textStyle: TextStyle(fontSize: width/18, color: Constants.primaryAppColor, fontWeight: FontWeight.w600),
       decoration: defaultPinTheme.decoration?.copyWith(
         border: Border.all(color: Constants.bodyTextColor),
         borderRadius: BorderRadius.circular(10),
@@ -111,7 +117,7 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
               height: size.height,
               width: size.width,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 0.0),
+                padding: EdgeInsets.symmetric(horizontal: width/36, vertical: 0.0),
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -142,7 +148,7 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
                       ),
                       SizedBox(height: size.height * 0.05),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        padding: EdgeInsets.symmetric(horizontal: width/24),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -161,7 +167,7 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
                               showCursor: true,
                               onCompleted: (pin) => print(pin),
                             ),
-                            SizedBox(height: 20),
+                            SizedBox(height: height/37.8),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -169,7 +175,7 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
                                   text: "Resend code in ",
                                   style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.w600,
-                                    fontSize: 14,
+                                    fontSize: width/25.71428571428571,
                                     color: Constants.bodyTextColor,
                                   ),
                                 ),
@@ -177,7 +183,7 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
                                   "${counter}s",
                                   style: GoogleFonts.poppins(
                                     fontWeight: FontWeight.w600,
-                                    fontSize: 14,
+                                    fontSize: width/25.71428571428571,
                                     color: Constants.primaryAppColor,
                                   ),
                                 ),
@@ -252,7 +258,7 @@ class _OtpVerificationViewState extends State<OtpVerificationView> {
                         ),
                       ),
                       Container(
-                        margin: const EdgeInsets.only(top: 25.0),
+                        margin: EdgeInsets.only(top: height/30.24),
                         child: Center(
                           child: KText(
                             text: "loading..Please wait...",

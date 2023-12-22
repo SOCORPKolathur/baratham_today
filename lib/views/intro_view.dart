@@ -43,6 +43,9 @@ class _IntroViewState extends State<IntroView> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    double height = size.height;
+    double width = size.width;
     return Scaffold(
       body: Stack(
         children: [
@@ -67,9 +70,9 @@ class _IntroViewState extends State<IntroView> {
               }
           ),
           Positioned(
-            bottom: 50,
-            left: 20,
-            right: 20,
+            bottom: height/15.12,
+            left: width/18,
+            right: width/18,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -80,13 +83,13 @@ class _IntroViewState extends State<IntroView> {
                 InkWell(
                   onTap: onNextPage,
                   child: Container(
-                    height: 40,
+                    height: height/18.9,
                     decoration: BoxDecoration(
                       color: Constants.primaryAppColor,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      padding: EdgeInsets.symmetric(horizontal: width/18),
                       child: Center(
                         child: KText(
                           text: _activePage == 2 ? "Get Started" : "Next",
@@ -122,6 +125,7 @@ class _IntroViewState extends State<IntroView> {
   }
 
   Widget _indicatorsTrue() {
+
     final String color;
     if (_activePage == 0) {
       color = '#ffe24e';

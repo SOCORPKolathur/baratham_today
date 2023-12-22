@@ -56,16 +56,16 @@ class IntroWidget extends StatelessWidget {
                     text: title,
                     style: GoogleFonts.poppins(
                       color: Constants.secondaryAppColor,
-                      fontSize: 20,
+                      fontSize: width/18,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  const SizedBox(height: 16,),
+                  SizedBox(height: height/47.25),
                   KText(
                     text: description,
                     style: GoogleFonts.poppins(
                       color: Constants.bodyTextColor,
-                      fontSize: 14,
+                      fontSize: width/25.71428571428571,
                       fontWeight: FontWeight.w400,
                     ),
                     textAlign: TextAlign.start,

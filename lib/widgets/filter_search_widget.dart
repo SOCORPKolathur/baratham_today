@@ -31,8 +31,10 @@ class _FilterSearchWidgetState extends State<FilterSearchWidget> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    double width = size.width;
+    double height = size.height;
     return Container(
-      padding: const EdgeInsets.only(right: 15),
+      padding: EdgeInsets.only(right: width/24),
       height: size.height * 0.1,
       width: size.width,
       child: Column(
@@ -43,7 +45,7 @@ class _FilterSearchWidgetState extends State<FilterSearchWidget> {
             onFieldSubmitted: widget.onSubmitted,
             controller: widget.controller,
             decoration: InputDecoration(
-              contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+              contentPadding: EdgeInsets.symmetric(horizontal: width/36, vertical: height/189),
               border: const OutlineInputBorder(),
               prefixIcon: IconButton(
                 icon: Icon(Icons.search,color: const Color(0xff757879)),
@@ -60,7 +62,7 @@ class _FilterSearchWidgetState extends State<FilterSearchWidget> {
               hintText: "Search",
               hintStyle: GoogleFonts.poppins(
                 color:  Color(0xffA7A1A1),
-                fontSize: 14,
+                fontSize: width/25.71428571428571,
               ),
             ),
           ),
