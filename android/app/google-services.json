@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "551688859884",
+    "project_id": "barathamtoday",
+    "storage_bucket": "barathamtoday.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:551688859884:android:0e2f6665a37d622a83b5c9",
+        "android_client_info": {
+          "package_name": "com.example.baratham_today"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC32v_0pHNpw6dsSStXyk-T0xTuRmIGaKE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
