@@ -1,5 +1,6 @@
 import 'package:baratham_today/constants.dart';
 import 'package:baratham_today/models/news_model.dart';
+import 'package:baratham_today/views/change_language_view.dart';
 import 'package:baratham_today/views/news_detail_view.dart';
 import 'package:baratham_today/views/news_list_view.dart';
 import 'package:baratham_today/views/notifications_view.dart';
@@ -65,27 +66,54 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                     const TitleWidget(),
                     Padding(
                       padding: EdgeInsets.only(right: width/72),
-                      child: InkWell(
-                        onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (ctx)=> NotificationsView(userDocId: FirebaseAuth.instance.currentUser!.uid)));
-                        },
-                        child: Material(
-                          elevation: 2,
-                          borderRadius: BorderRadius.circular(10),
-                          child: Container(
-                            height: height/16.8,
-                            width: width/8,
-                            decoration: BoxDecoration(
+                      child: Row(
+                        children: [
+                          InkWell(
+                            onTap: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (ctx)=> NotificationsView(userDocId: FirebaseAuth.instance.currentUser!.uid)));
+                              },
+                            child: Material(
+                              elevation: 2,
                               borderRadius: BorderRadius.circular(10),
-                              color: Constants.primaryWhite,
-                            ),
-                            child: Center(
-                              child: Image.asset(
-                                "assets/noti_ico.png",
+                              child: Container(
+                                height: height/16.8,
+                                width: width/8,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Constants.primaryWhite,
+                                ),
+                                child: Center(
+                                  child: Image.asset(
+                                    "assets/noti_ico.png",
+                                  ),
+                                ),
                               ),
                             ),
                           ),
-                        ),
+                          SizedBox(width: 10),
+                          InkWell(
+                            onTap: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (ctx)=> ChangeLanguageView()));
+                            },
+                            child: Material(
+                              elevation: 2,
+                              borderRadius: BorderRadius.circular(10),
+                              child: Container(
+                                height: height/16.8,
+                                width: width/8,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Constants.primaryWhite,
+                                ),
+                                child: Center(
+                                  child: Icon(
+                                    Icons.translate,
+                                  )
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],

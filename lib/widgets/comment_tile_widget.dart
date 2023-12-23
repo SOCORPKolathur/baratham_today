@@ -196,19 +196,19 @@ class _CommentTileWidgetState extends State<CommentTileWidget> {
                                             ),
                                           ),
                                           SizedBox(width: width/36),
-                                          Icon(
-                                            Icons.reply_outlined,
-                                            color: Constants.bodyTextColor,
-                                            size: width/24,
-                                          ),
-                                          KText(
-                                            text: " reply",
-                                            style: GoogleFonts.poppins(
-                                              fontSize: width/24,
-                                              fontWeight: FontWeight.w400,
-                                              color: Constants.bodyTextColor,
-                                            ),
-                                          ),
+                                          // Icon(
+                                          //   Icons.reply_outlined,
+                                          //   color: Constants.bodyTextColor,
+                                          //   size: width/24,
+                                          // ),
+                                          // KText(
+                                          //   text: " reply",
+                                          //   style: GoogleFonts.poppins(
+                                          //     fontSize: width/24,
+                                          //     fontWeight: FontWeight.w400,
+                                          //     color: Constants.bodyTextColor,
+                                          //   ),
+                                          // ),
                                         ],
                                       ),
                                     ],

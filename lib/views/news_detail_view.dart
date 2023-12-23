@@ -10,6 +10,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/date_symbol_data_file.dart';
 import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
@@ -26,11 +27,13 @@ class NewsDetailsView extends StatefulWidget {
   State<NewsDetailsView> createState() => _NewsDetailsViewState();
 }
 
-class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProviderStateMixin {
+class _NewsDetailsViewState extends State<NewsDetailsView> with TickerProviderStateMixin {
 
   int commentsCount = 0;
 
   late final AnimationController _controller = AnimationController(
+      duration: const Duration(milliseconds: 300), vsync: this, value: 1.0);
+  late final AnimationController _controller1 = AnimationController(
       duration: const Duration(milliseconds: 300), vsync: this, value: 1.0);
 
   @override
@@ -229,18 +232,38 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
                           Row(
                             children: [
                               SizedBox(width: width/36),
-                              IconButton(
-                                onPressed: () {
-                                  setState(() {
-
-                                  });
+                              // IconButton(
+                              //   onPressed: () {
+                              //     setState(() {
+                              //
+                              //     });
+                              //   },
+                              //   icon: Icon(
+                              //     Icons.favorite_border,
+                              //     color: Colors.red,
+                              //     size: width/12,
+                              //   ),
+                              // ),
+                              InkWell(
+                                onTap: (){
+                                  updateLike(widget.news, FirebaseAuth.instance.currentUser!.uid);
+                                  _controller1
+                                      .reverse()
+                                      .then((value) => _controller1.forward());
                                 },
-                                icon: Icon(
-                                  Icons.favorite_border,
-                                  color: Colors.red,
-                                  size: width/12,
+                                child: Center(
+                                  child: ScaleTransition(
+                                    scale: Tween(begin: 0.2, end: 1.0).animate(
+                                        CurvedAnimation(parent: _controller1, curve: Curves.easeOut)),
+                                    child: Icon(
+                                      widget.news.likes!.contains(FirebaseAuth.instance.currentUser!.uid) ? Icons.favorite : Icons.favorite_border,
+                                      color: Constants.primaryAppColor,
+                                      size: width/12,
+                                    ),
+                                  ),
                                 ),
                               ),
+                              SizedBox(width: 5),
                               KText(
                                 text: "${widget.news.likes!.length} likes",
                                 style: GoogleFonts.poppins(
@@ -255,10 +278,14 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
                                   showModalBottomSheet<void>(
                                     context: context,
                                     elevation: 3,
+                                    isScrollControlled: true,
                                     backgroundColor: Constants.appBackgroundColor,
                                     useSafeArea: false,
                                     builder: (BuildContext context) {
-                                      return bottomSheetWidget(user);
+                                      return Padding(
+                                        padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+                                        child: bottomSheetWidget(user),
+                                      );
                                     },
                                   );
                                 },
@@ -339,7 +366,7 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
     double height = MediaQuery.of(context).size.height;
     return Container(
         color: Constants.appBackgroundColor,
-        height: height/0.756,
+        height: height/1.512,
         width: width,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -425,10 +452,12 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
                     SizedBox(width: width/36),
                     InkWell(
                       onTap: () async {
+                        //String date = DateFormat("dd-MM-yyyy").format(DateTime.now());
+                        //String time = DateFormat('hh:mm aa').format(DateTime.now());
                         CommentModel commentModel = CommentModel(
                           timestamp: DateTime.now().millisecondsSinceEpoch,
-                          time: DateFormat('hh:mm aa').format(DateTime.now()),
-                          date: DateFormat("dd-MM-yyyy").format(DateTime.now()),
+                          time: "0:00 AM",
+                          date: "12-09-2000",
                           likes: [],
                           message: commentController.text,
                           replies: [],
@@ -493,6 +522,30 @@ class _NewsDetailsViewState extends State<NewsDetailsView> with SingleTickerProv
       }
     });
   }
+
+  updateLike(NewsModel news, String phone) async {
+    List<String> likes = [];
+    news.likes!.forEach((element) {
+      likes.add(element);
+    });
+    if (!likes.contains(phone)) {
+      likes.add(phone);
+      setState(() {
+        widget.news.likes!.add(phone);
+      });
+    }else{
+      likes.remove(phone);
+      setState(() {
+        widget.news.likes!.remove(phone);
+      });
+    }
+    var document = await FirebaseFirestore.instance
+        .collection('News')
+        .doc(news.id)
+        .update({"likes": likes});
+  }
+
+
 
 }
 
