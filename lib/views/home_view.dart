@@ -12,7 +12,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../widgets/kText.dart';
 import '../widgets/news_tile_widget.dart';
 
@@ -127,9 +126,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                         children: [
                           FilterSearchWidget(
                             controller: searchController,
-                            onSubmitted: (val){
-
-                            },
+                            onSubmitted: (val){},
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -207,10 +204,11 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                                       ),
                                       SizedBox(height: height/151.2),
                                       SizedBox(
-                                        height: height/25.2,
+                                        height: height/14.2,
                                         width: width,
                                         child: KText(
                                           text: news.title!,
+                              maxLines:1,
                                           style: GoogleFonts.poppins(
                                             fontSize: width/21.17647058823529,
                                             fontWeight: FontWeight.w400,

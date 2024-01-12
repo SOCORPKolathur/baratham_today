@@ -1,6 +1,6 @@
 import 'package:baratham_today/views/bookmarks_view.dart';
 import 'package:baratham_today/views/explore_view.dart';
-import 'package:baratham_today/views/profile_view.dart';
+import 'package:baratham_today/views/profileview.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -23,7 +23,7 @@ class _MainViewState extends State<MainView> {
     HomeView(),
     ExploreView(),
     BookmarksView(),
-    ProfileView(),
+    ProfileView( uid: '', userDocId: '',),
   ];
 
   int animatesetvalue = 0;

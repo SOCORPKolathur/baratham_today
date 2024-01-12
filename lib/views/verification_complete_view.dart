@@ -88,7 +88,11 @@ class _VerificationComleteViewState extends State<VerificationComleteView> {
                 Expanded(child: Container()),
                 PrimaryButton(
                   onTap: (){
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (ctx)=> const MainView()));
+                    Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                MainView()),
+                            (Route<dynamic> route) => false);
                   },
                   title: "Go to Homepage",
                 ),
